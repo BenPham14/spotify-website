@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+section {
+    margin: 0 20px;
+    margin-bottom: 40px;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+.playlists {
+    gap: 10px;
+}
+
+.playlists h3 {
+    background-color: rgb(40, 40, 40);
+    padding: 20px 15px;
+    border-radius: 5px;
+    margin: 0;
+    color: white;
+}
+
+.playlists h3:hover {
+    background-color: rgb(60, 60, 60);
+}
+
+a {
+    text-decoration: none;
+}
+
+.your-shows div:nth-child(1), 
+.todays-hits div:nth-child(1) {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.your-shows div:nth-child(1) a:hover,
+.todays-hits div:nth-child(1) a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
