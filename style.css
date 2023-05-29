@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
 * {
     box-sizing: border-box;
+    font-family: Roboto, sans-serif;
 }
 
 body {
@@ -7,11 +11,33 @@ body {
     padding: 0;
     background-color: black;
     color: white;
+    padding: 10px;
+}
+
+main {
+    
+}
+
+main,
+header {
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+}
+
+.home {
+    gap: 10px;
+}
+
+header {
+    padding: 5px 20px;
+}
+
+nav h3 {
+    color: white;
 }
 
 section {
-    margin: 0 20px;
-    margin-bottom: 40px;
+    margin: 0 15px 20px;
 }
 
 .grid {
@@ -20,6 +46,11 @@ section {
 
 .flex {
     display: flex;
+}
+
+.recents {
+    padding-top: 10px;
+    background: linear-gradient(rgb(40, 25, 60), rgb(20, 20, 20));
 }
 
 .playlists {
@@ -42,6 +73,12 @@ a {
     text-decoration: none;
 }
 
+.todays-hits .list,
+.your-shows .list {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
 .your-shows div:nth-child(1), 
 .todays-hits div:nth-child(1) {
     justify-content: space-between;
@@ -52,4 +89,23 @@ a {
 .todays-hits div:nth-child(1) a:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.todays-hits .list div,
+.your-shows .list div {
+    background-color: rgb(25, 25, 25);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.todays-hits .list div:hover,
+.your-shows .list div:hover {
+    background-color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+.todays-hits img,
+.your-shows img {
+    border-radius: 5px;
+    width: 100%;
 }
