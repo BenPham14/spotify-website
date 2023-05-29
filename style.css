@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-
 * {
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
@@ -14,8 +13,9 @@ body {
     padding: 10px;
 }
 
-main {
-    
+a {
+    text-decoration: none;
+    color: rgb(170, 170, 170);
 }
 
 main,
@@ -24,20 +24,16 @@ header {
     border-radius: 10px;
 }
 
-.home {
-    gap: 10px;
-}
-
 header {
     padding: 5px 20px;
 }
 
-nav h3 {
-    color: white;
+section {
+    padding: 0 15px 20px;
 }
 
-section {
-    margin: 0 15px 20px;
+.home {
+    gap: 10px;
 }
 
 .grid {
@@ -48,9 +44,14 @@ section {
     display: flex;
 }
 
+nav a:hover {
+    color: white;
+}
+
 .recents {
     padding-top: 10px;
     background: linear-gradient(rgb(40, 25, 60), rgb(20, 20, 20));
+    border-radius: 10px;
 }
 
 .playlists {
@@ -58,19 +59,20 @@ section {
 }
 
 .playlists h3 {
-    background-color: rgb(40, 40, 40);
+    background-color: rgba(80, 80, 80, 0.4);
     padding: 20px 15px;
-    border-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     margin: 0;
     color: white;
 }
 
 .playlists h3:hover {
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(80, 80, 80, 0.8);
 }
 
-a {
-    text-decoration: none;
+.playlists img {
+    width: 70px;
 }
 
 .todays-hits .list,
@@ -93,7 +95,7 @@ a {
 
 .todays-hits .list div,
 .your-shows .list div {
-    background-color: rgb(25, 25, 25);
+    background-color: rgb(30, 30, 30);
     padding: 15px;
     border-radius: 5px;
 }
@@ -108,4 +110,9 @@ a {
 .your-shows img {
     border-radius: 5px;
     width: 100%;
+}
+
+.todays-hits h5,
+.your-shows h5 {
+    color: rgb(170, 170, 170);
 }
