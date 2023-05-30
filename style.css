@@ -58,21 +58,32 @@ nav a:hover {
     gap: 10px;
 }
 
-.playlists h3 {
+.playlists a {
+    align-items: center;
+    gap: 15px;
     background-color: rgba(80, 80, 80, 0.4);
-    padding: 20px 15px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin: 0;
     color: white;
+    border-radius: 5px;
+    padding-right: 15px;
+
+    /* For text overflow */
+    overflow: hidden;
 }
 
-.playlists h3:hover {
+.playlists h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlists a:hover {
     background-color: rgb(80, 80, 80, 0.8);
 }
 
 .playlists img {
-    width: 70px;
+    max-width: 60px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .todays-hits .list,
