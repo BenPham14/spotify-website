@@ -19,13 +19,46 @@ a {
 }
 
 main,
-header {
+header,
+aside {
     background-color: rgb(20, 20, 20);
     border-radius: 10px;
 }
 
 header {
     padding: 5px 20px;
+}
+
+aside {
+    padding: 5px 20px 20px;
+    display: none;
+}
+
+aside div {
+    gap: 6px;
+}
+
+aside button {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 12px;
+    background-color: rgb(40, 40, 40);
+    color: white;
+}
+
+aside button:hover {
+    background-color: rgb(50, 50, 50);
+    cursor: pointer;
+}
+
+aside button:active {
+    background-color: rgb(30, 30, 30);
+}
+
+aside img {
+    max-width: 40px;
+    align-self: center;
+    border-radius: 5px;
 }
 
 section {
@@ -126,4 +159,53 @@ nav a:hover {
 .todays-hits h5,
 .your-shows h5 {
     color: rgb(170, 170, 170);
+}
+
+.your-shows .list div:nth-child(n+3),
+.todays-hits .list div:nth-child(n+3) {
+    display: none;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .playlists {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .todays-hits .list,
+    .your-shows .list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .your-shows .list div:nth-child(3),
+    .todays-hits .list div:nth-child(3) {
+        display: block;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .playlists {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .todays-hits .list,
+    .your-shows .list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .your-shows .list div:nth-child(4),
+    .todays-hits .list div:nth-child(4) {
+        display: block;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }
