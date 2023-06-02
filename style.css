@@ -29,6 +29,31 @@ header {
     padding: 5px 20px;
 }
 
+section {
+    padding: 0 20px 20px;
+}
+
+.home {
+    gap: 10px;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex {
+    display: flex;
+}
+
+nav a {
+    gap: 15px;
+    align-items: baseline;
+}
+
+nav a:hover {
+    color: white;
+}
+
 aside {
     padding: 5px 20px 20px;
     display: none;
@@ -36,6 +61,7 @@ aside {
 
 aside div {
     gap: 6px;
+    margin-bottom: 15px;
 }
 
 aside button {
@@ -55,29 +81,24 @@ aside button:active {
     background-color: rgb(30, 30, 30);
 }
 
-aside img {
-    max-width: 40px;
-    align-self: center;
+aside a {
     border-radius: 5px;
 }
 
-section {
-    padding: 0 15px 20px;
+aside a:hover {
+    color: white;
+    background-color: rgb(40, 40, 40);
 }
 
-.home {
-    gap: 10px;
+aside img {
+    max-width: 50px;
+    align-self: center;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
-.grid {
-    display: grid;
-}
-
-.flex {
-    display: flex;
-}
-
-nav a:hover {
+aside .list a {
+    gap: 15px;
     color: white;
 }
 
@@ -85,6 +106,10 @@ nav a:hover {
     padding-top: 10px;
     background: linear-gradient(rgb(40, 25, 60), rgb(20, 20, 20));
     border-radius: 10px;
+}
+
+.recents h1:nth-child(1) {
+    font-size: 2rem;
 }
 
 .playlists {
@@ -202,10 +227,28 @@ nav a:hover {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    aside {
+        display: block;
+    }
 
+    .home {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    main {
+        grid-column: 2;
+        grid-row: 1/3;
+    }
+
+    aside {
+        grid-column: 1;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
+    .playlists img {
+        max-width: 80px;
+    }
 }
