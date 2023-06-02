@@ -45,6 +45,12 @@ section {
     display: flex;
 }
 
+.active {
+    color: white;
+}
+
+/* --------- Nav --------- */
+
 nav a {
     gap: 15px;
     align-items: baseline;
@@ -53,6 +59,8 @@ nav a {
 nav a:hover {
     color: white;
 }
+
+/* --------- Sidebar --------- */
 
 aside {
     padding: 5px 20px 20px;
@@ -101,6 +109,8 @@ aside .list a {
     gap: 15px;
     color: white;
 }
+
+/* --------- Home --------- */
 
 .recents {
     padding-top: 10px;
@@ -239,8 +249,15 @@ aside .list a {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    html, body {
+        margin: 0; 
+        height: 100%; 
+        overflow: hidden
+    }
+
     aside {
         display: block;
+        overflow-y: auto;
     }
 
     .home {
