@@ -191,6 +191,18 @@ aside .list a {
     display: none;
 }
 
+.todays-hits .list div,
+.your-shows .list div {
+    overflow: hidden;
+}
+
+.todays-hits h4,
+.your-shows h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .playlists {
@@ -232,17 +244,15 @@ aside .list a {
     }
 
     .home {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 30% 1fr;
         grid-template-rows: auto 1fr;
     }
 
     main {
         grid-column: 2;
         grid-row: 1/3;
-    }
-
-    aside {
-        grid-column: 1;
+        height: 97vh;
+        overflow-y: auto;
     }
 }
 
