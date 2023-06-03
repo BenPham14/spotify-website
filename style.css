@@ -107,6 +107,8 @@ aside a:hover {
 }
 
 aside img {
+    aspect-ratio: 1;
+    object-fit: cover;
     max-width: 50px;
     align-self: center;
     border-radius: 5px;
@@ -161,59 +163,59 @@ aside .list a {
     border-bottom-left-radius: 5px;
 }
 
-.todays-hits .list,
+.saved-episodes .list,
 .your-shows .list {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
 
 .your-shows div:nth-child(1), 
-.todays-hits div:nth-child(1) {
+.saved-episodes div:nth-child(1) {
     justify-content: space-between;
     align-items: center;
 }
 
 .your-shows div:nth-child(1) a:hover,
-.todays-hits div:nth-child(1) a:hover{
+.saved-episodes div:nth-child(1) a:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-.todays-hits .list div,
+.saved-episodes .list div,
 .your-shows .list div {
     background-color: rgb(30, 30, 30);
     padding: 15px;
     border-radius: 5px;
 }
 
-.todays-hits .list div:hover,
+.saved-episodes .list div:hover,
 .your-shows .list div:hover {
     background-color: rgb(40, 40, 40);
     cursor: pointer;
 }
 
-.todays-hits img,
+.saved-episodes img,
 .your-shows img {
     border-radius: 5px;
     width: 100%;
 }
 
-.todays-hits h5,
+.saved-episodes h5,
 .your-shows h5 {
     color: rgb(170, 170, 170);
 }
 
 .your-shows .list div:nth-child(n+3),
-.todays-hits .list div:nth-child(n+3) {
+.saved-episodes .list div:nth-child(n+3) {
     display: none;
 }
 
-.todays-hits .list div,
+.saved-episodes .list div,
 .your-shows .list div {
     overflow: hidden;
 }
 
-.todays-hits h4,
+.saved-episodes h4,
 .your-shows h4 {
     white-space: nowrap;
     overflow: hidden;
@@ -226,13 +228,13 @@ aside .list a {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .todays-hits .list,
+    .saved-episodes .list,
     .your-shows .list {
         grid-template-columns: repeat(3, 1fr);
     }
 
     .your-shows .list div:nth-child(3),
-    .todays-hits .list div:nth-child(3) {
+    .saved-episodes .list div:nth-child(3) {
         display: block;
     }
 }
@@ -243,13 +245,13 @@ aside .list a {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .todays-hits .list,
+    .saved-episodes .list,
     .your-shows .list {
         grid-template-columns: repeat(4, 1fr);
     }
 
     .your-shows .list div:nth-child(4),
-    .todays-hits .list div:nth-child(4) {
+    .saved-episodes .list div:nth-child(4) {
         display: block;
     }
 }
