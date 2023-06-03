@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
 </head>
 <body class="home grid">
     <header>
         <nav>
             <a href="#" class="active"><h3>Home</h3></a>
-            <a href="search.html"><h3>Search</h3></a>
+            <a href="#"><h3>Search</h3></a>
         </nav>
     </header>
 
@@ -21,25 +22,16 @@
             <button>Playlists</button>
             <button>Podcasts</button>
         </div>
-        <div class="list">
-            <a href="#" class="flex">
-                <img src="assets/likedsongs.jpg" alt="">
-                <h4>Liked Songs</h4>
-            </a>
-            <a href="#" class="flex">
-                <img src="assets/likedsongs.jpg" alt="">
-                <h4>Liked Songs</h4>
-            </a>
-            <a href="#" class="flex">
-                <img src="assets/likedsongs.jpg" alt="">
-                <h4>Liked Songs</h4>
-            </a>
-        </div>
+
+        <div class="list"></div>
     </aside>
 
     <main>
         <section class="recents">
-            <h1>Good afternoon</h1>
+            <h1 id="greeting">Good morning</h1>
+            <script>
+                document.getElementById('greeting').innerHTML = new Date().getHours() >= 12 ? 'Good afternoon' : 'Good morning';
+            </script>
             <div class="playlists grid">
                 <a href="#" class="flex">
                     <img src="assets/likedsongs.jpg" alt="">

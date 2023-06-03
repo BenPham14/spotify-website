@@ -91,6 +91,14 @@ aside button:active {
 
 aside a {
     border-radius: 5px;
+    overflow: hidden;
+}
+
+aside a h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 15px;
 }
 
 aside a:hover {
@@ -106,7 +114,6 @@ aside img {
 }
 
 aside .list a {
-    gap: 15px;
     color: white;
 }
 
@@ -114,7 +121,7 @@ aside .list a {
 
 .recents {
     padding-top: 10px;
-    background: linear-gradient(rgb(40, 25, 60), rgb(20, 20, 20));
+    background: linear-gradient(rgb(32, 25, 60), rgb(20, 20, 20));
     border-radius: 10px;
 }
 
