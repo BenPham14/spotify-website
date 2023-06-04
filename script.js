@@ -187,3 +187,11 @@ function populateUI(playlists, podcasts, episodes) {
 document.querySelector("main #profile").addEventListener('click', () => {
     document.querySelector(".profile-modal").classList.toggle('showing');
 });
+
+document.querySelector(".profile-modal #profile-button").addEventListener('click', () => {
+    document.querySelector(".profile-details").showModal();
+});
+
+document.querySelector(".profile-details #close").addEventListener('click', () => {
+    document.querySelector(".profile-details").close();
+});

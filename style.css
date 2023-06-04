@@ -158,11 +158,10 @@ main #profile img:active {
     right: 30px;
     top: 90px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     padding: 5px;
     width: 150px;
     flex-direction: column;
-    /* display: none; */
 }
 
 .profile-modal.showing {
@@ -177,6 +176,53 @@ main #profile img:active {
 
 .profile-modal a:hover {
     background-color: rgb(60, 60, 60);
+}
+
+.profile-details {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(rgb(0, 162, 111), rgb(0, 0, 0));
+    color: white;
+}
+
+.profile-details #close {
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    align-self: baseline;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.profile-details::backdrop {
+    background: rgb(0 0 0 / 0.3);
+}
+
+.profile-details > .flex {
+    justify-content: space-between;
+}
+
+.profile-details #details {
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-details #details .flex {
+    gap: 5px;
+    flex-direction: column;
+}
+
+.profile-details img {
+    max-width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-details h1, h5, h6 {
+    margin: 0;
 }
 
 .recents {
