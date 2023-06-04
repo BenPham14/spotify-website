@@ -17,7 +17,11 @@
     </header>
 
     <aside>
-        <h3>Your Library</h3>
+        <div class="title flex">
+            <h3>Your Library</h3>
+            <button>+</button>
+        </div>
+        
         <div class="flex">
             <button>Playlists</button>
             <button>Podcasts</button>
@@ -28,7 +32,10 @@
 
     <main>
         <section class="recents">
-            <h1 id="greeting">Good morning</h1>
+            <div class="title flex">
+                <h1 id="greeting">Good morning</h1>
+                <button class="profile"><img src="assets/likedsongs.jpg" alt=""></button>
+            </div>
             <script>
                 document.getElementById('greeting').innerHTML = new Date().getHours() >= 12 ? 'Good afternoon' : 'Good morning';
             </script>

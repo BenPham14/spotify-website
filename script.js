@@ -4,7 +4,7 @@ const redirect = REDIRECT_URI;
 const client_id = CLIENT_ID;
 
 const playlistsURL = "https://api.spotify.com/v1/me/playlists?offset=0&limit=20";
-const podcastsURL = "https://api.spotify.com/v1/me/shows?offset=0&limit=4";
+const podcastsURL = "https://api.spotify.com/v1/me/shows?offset=0&limit=20";
 const episodesURL = "https://api.spotify.com/v1/me/episodes?offset=0&limit=4";
 
 const params = new URLSearchParams(window.location.search);
@@ -17,7 +17,7 @@ if (!code) {
     const playlists = await fetchAPI(accessToken, playlistsURL);
     const podcasts = await fetchAPI(accessToken, podcastsURL);
     const episodes = await fetchAPI(accessToken, episodesURL);
-    console.log(episodes);
+    // console.log(episodes);
     populateUI(playlists.items, podcasts.items, episodes.items);
 }
 
@@ -104,6 +104,22 @@ function populateUI(playlists, podcasts, episodes) {
         document.querySelector("aside .list").append(p);
     });
 
+    const pod = podcasts.map(p => {
+        const list = document.createElement('a');
+        list.classList.add('flex');
+        list.innerHTML = `
+            <img src=${p.show.images[0] ? p.show.images[0].url : "assets/likedsongs.jpg"} alt="">
+            <h4>${p.show.name}</h4>
+        `;
+        return list;
+    });
+    
+    pod.forEach(p => {
+        document.querySelector("aside .list").append(p);
+    });
+
+    /** --------------------------------------------------- **/
+
     const podcast = podcasts.map(p => {
         const list = document.createElement('div');
         list.innerHTML = `
@@ -118,6 +134,8 @@ function populateUI(playlists, podcasts, episodes) {
         document.querySelector(".your-shows .list").append(p);
     });
 
+    /** --------------------------------------------------- **/
+
     const episode = episodes.map(p => {
         const list = document.createElement('div');
         list.innerHTML = `
@@ -131,6 +149,8 @@ function populateUI(playlists, podcasts, episodes) {
     episode.forEach(p => {
         document.querySelector(".saved-episodes .list").append(p);
     });
+
+    /** --------------------------------------------------- **/
 
     const list = `
         <a href="#" class="flex">
