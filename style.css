@@ -131,25 +131,52 @@ main .title {
     justify-content: space-between;
 }
 
-main .profile {
+main #profile {
     padding: 0;
     border: none;
     background: none;
 }
 
-main .profile img {
+main #profile img {
     object-fit: cover;
     border-radius: 50%;
     max-width: 30px;
 }
 
-main .profile img:hover {
+main #profile img:hover {
     max-width: 31px;
     cursor: pointer;
 }
 
-main .profile img:active {
+main #profile img:active {
     filter: brightness(80%);
+}
+
+.profile-modal {
+    background-color: rgb(40, 40, 40);
+    position: absolute;
+    right: 30px;
+    top: 90px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    padding: 5px;
+    width: 150px;
+    flex-direction: column;
+    /* display: none; */
+}
+
+.profile-modal.showing {
+    display: none;
+}
+
+.profile-modal a {
+    color: white;
+    padding: 10px;
+    border-radius: 2px;
+}
+
+.profile-modal a:hover {
+    background-color: rgb(60, 60, 60);
 }
 
 .recents {

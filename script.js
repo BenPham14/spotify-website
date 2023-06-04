@@ -181,3 +181,9 @@ function populateUI(playlists, podcasts, episodes) {
 
     document.querySelector(".playlists").innerHTML = list;
 }
+
+/** --------------------------- Profile Modal --------------------------- **/
+
+document.querySelector("main #profile").addEventListener('click', () => {
+    document.querySelector(".profile-modal").classList.toggle('showing');
+});

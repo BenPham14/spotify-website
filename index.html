@@ -34,7 +34,7 @@
         <section class="recents">
             <div class="title flex">
                 <h1 id="greeting">Good morning</h1>
-                <button class="profile"><img src="assets/likedsongs.jpg" alt=""></button>
+                <button id="profile"><img src="assets/likedsongs.jpg" alt=""></button>
             </div>
             <script>
                 document.getElementById('greeting').innerHTML = new Date().getHours() >= 12 ? 'Good afternoon' : 'Good morning';
@@ -56,6 +56,13 @@
                 <a>Show all</a>
             </div>
             <div class="list grid"></div>
+        </section>
+
+        <section class="profile-modal flex showing">
+            <a href="#">Profile</a>
+            <a href="#">Account</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
         </section>
     </main>
 
