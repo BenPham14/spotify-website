@@ -92,6 +92,7 @@ aside button:active {
 aside a {
     border-radius: 5px;
     overflow: hidden;
+    margin-left: -5px;
 }
 
 aside a h4 {
@@ -141,6 +142,7 @@ main #profile img {
     object-fit: cover;
     border-radius: 50%;
     max-width: 30px;
+    aspect-ratio: 1;
 }
 
 main #profile img:hover {
@@ -179,7 +181,7 @@ main #profile img:active {
 }
 
 .profile-details {
-    width: 90%;
+    width: 80%;
     max-width: 500px;
     border-radius: 10px;
     border: none;
@@ -219,9 +221,10 @@ main #profile img:active {
     max-width: 100px;
     object-fit: cover;
     border-radius: 50%;
+    aspect-ratio: 1;
 }
 
-.profile-details h1, h5, h6 {
+.profile-details h1, h2, h5, h6 {
     margin: 0;
 }
 

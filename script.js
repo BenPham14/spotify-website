@@ -6,6 +6,7 @@ const client_id = CLIENT_ID;
 const playlistsURL = "https://api.spotify.com/v1/me/playlists?offset=0&limit=20";
 const podcastsURL = "https://api.spotify.com/v1/me/shows?offset=0&limit=20";
 const episodesURL = "https://api.spotify.com/v1/me/episodes?offset=0&limit=4";
+const profileURL = "https://api.spotify.com/v1/me";
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -17,8 +18,9 @@ if (!code) {
     const playlists = await fetchAPI(accessToken, playlistsURL);
     const podcasts = await fetchAPI(accessToken, podcastsURL);
     const episodes = await fetchAPI(accessToken, episodesURL);
-    // console.log(episodes);
-    populateUI(playlists.items, podcasts.items, episodes.items);
+    const profile = await fetchAPI(accessToken, profileURL)
+    console.log(profile);
+    populateUI(playlists.items, podcasts.items, episodes.items, profile);
 }
 
 async function redirectToAuthCodeFlow(clientId, redirectUri) {
@@ -88,7 +90,7 @@ async function fetchAPI(token, url) {
     return await result.json();
 }
 
-function populateUI(playlists, podcasts, episodes) {
+function populateUI(playlists, podcasts, episodes, profile) {
     // TODO: Update UI with data
     const playlist = playlists.map(p => {
         const list = document.createElement('a');
@@ -152,7 +154,7 @@ function populateUI(playlists, podcasts, episodes) {
 
     /** --------------------------------------------------- **/
 
-    const list = `
+    const playlistList = `
         <a href="#" class="flex">
             <img src="assets/likedsongs.jpg" alt="">
             <h3>Liked Songs</h3>
@@ -179,7 +181,32 @@ function populateUI(playlists, podcasts, episodes) {
         </a>
     `
 
-    document.querySelector(".playlists").innerHTML = list;
+    document.querySelector(".playlists").innerHTML = playlistList;
+
+    /** --------------------------------------------------- **/
+
+    const profileList = `
+        <div class="flex">
+            <div class="flex" id="details">
+                <img src="${profile.images[0].url}" alt="">
+                <div class="flex">
+                    <h6>Profile</h6>
+                    <h1>${profile.display_name}</h1>
+                    <h5>${profile.followers.total} Follower</h5>
+                </div>
+            </div>
+            <button id="close">&times;</button>
+        </div>
+
+        <h2>Top artists</h2>
+        <h5>Only visible to you</h5>
+
+        <h2>Top tracks</h2>
+        <h5>Only visible to you</h5>
+    `;
+
+    document.querySelector(".profile-details").innerHTML = profileList;
+    document.querySelector("main #profile img").src = profile.images[0].url;
 }
 
 /** --------------------------- Profile Modal --------------------------- **/
