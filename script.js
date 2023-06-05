@@ -7,6 +7,7 @@ const playlistsURL = "https://api.spotify.com/v1/me/playlists?offset=0&limit=20"
 const podcastsURL = "https://api.spotify.com/v1/me/shows?offset=0&limit=20";
 const episodesURL = "https://api.spotify.com/v1/me/episodes?offset=0&limit=4";
 const profileURL = "https://api.spotify.com/v1/me";
+const topArtistsURL = "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=3&offset=0"
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -18,9 +19,10 @@ if (!code) {
     const playlists = await fetchAPI(accessToken, playlistsURL);
     const podcasts = await fetchAPI(accessToken, podcastsURL);
     const episodes = await fetchAPI(accessToken, episodesURL);
-    const profile = await fetchAPI(accessToken, profileURL)
-    console.log(profile);
-    populateUI(playlists.items, podcasts.items, episodes.items, profile);
+    const profile = await fetchAPI(accessToken, profileURL);
+    const topArtists = await fetchAPI(accessToken, topArtistsURL);
+    // console.log(topArtists);
+    populateUI(playlists.items, podcasts.items, episodes.items, profile, topArtists.items);
 }
 
 async function redirectToAuthCodeFlow(clientId, redirectUri) {
@@ -34,7 +36,7 @@ async function redirectToAuthCodeFlow(clientId, redirectUri) {
     params.append("client_id", clientId);
     params.append("response_type", "code");
     params.append("redirect_uri", redirectUri);
-    params.append("scope", "user-read-private user-read-email playlist-read-private user-library-read user-read-playback-position");
+    params.append("scope", "user-read-private user-read-email playlist-read-private user-library-read user-read-playback-position user-top-read");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
 
@@ -90,7 +92,7 @@ async function fetchAPI(token, url) {
     return await result.json();
 }
 
-function populateUI(playlists, podcasts, episodes, profile) {
+function populateUI(playlists, podcasts, episodes, profile, topArtists) {
     // TODO: Update UI with data
     const playlist = playlists.map(p => {
         const list = document.createElement('a');
@@ -198,11 +200,35 @@ function populateUI(playlists, podcasts, episodes, profile) {
             <button id="close">&times;</button>
         </div>
 
-        <h2>Top artists</h2>
-        <h5>Only visible to you</h5>
+        <div class="top-artists">
+            <h2>Top artists this month</h2>
+            <h5>Only visible to you</h5>
+            <div class="grid">
+                <div>
+                    <img src=${topArtists[0].images[0].url} alt="">
+                    <h4>${topArtists[0].name}</h4>
+                    <h5>Artist</h5>
+                </div>
+                <div>
+                    <img src=${topArtists[1].images[0].url} alt="">
+                    <h4>${topArtists[1].name}</h4>
+                    <h5>Artist</h5>
+                </div>
+                <div>
+                    <img src=${topArtists[2].images[0].url} alt="">
+                    <h4>${topArtists[2].name}</h4>
+                    <h5>Artist</h5>
+                </div>
+            </div>
+        </div>
 
-        <h2>Top tracks</h2>
-        <h5>Only visible to you</h5>
+        <div class="top-tracks">
+            <h2>Top tracks this month</h2>
+            <h5>Only visible to you</h5>
+            <div>
+
+            </div>
+        </div>
     `;
 
     document.querySelector(".profile-details").innerHTML = profileList;

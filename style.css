@@ -100,6 +100,7 @@ aside a h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 15px;
+    font-weight: 100;
 }
 
 aside a:hover {
@@ -182,11 +183,17 @@ main #profile img:active {
 
 .profile-details {
     width: 80%;
-    max-width: 500px;
+    max-width: fit-content;
     border-radius: 10px;
     border: none;
-    background: linear-gradient(rgb(0, 162, 111), rgb(0, 0, 0));
     color: white;
+    background-color: rgb(20, 20, 20);
+    padding: 0;
+}
+
+.profile-details .top-artists,
+.profile-details .top-tracks {
+    padding: 15px;
 }
 
 .profile-details #close {
@@ -200,11 +207,13 @@ main #profile img:active {
 }
 
 .profile-details::backdrop {
-    background: rgb(0 0 0 / 0.3);
+    background: rgb(0 0 0 / 0.7);
 }
 
 .profile-details > .flex {
     justify-content: space-between;
+    background: linear-gradient(rgb(0, 162, 111), rgb(20, 20, 20));
+    padding: 15px;
 }
 
 .profile-details #details {
@@ -226,6 +235,26 @@ main #profile img:active {
 
 .profile-details h1, h2, h5, h6 {
     margin: 0;
+}
+
+.profile-details .top-artists h2,
+.profile-details .top-tracks h2 {
+    margin-bottom: 10px;
+}
+
+.profile-details .top-artists h5:first-of-type,
+.profile-details .top-tracks h5:first-of-type {
+    margin-bottom: 20px;
+    color: rgb(170, 170, 170);
+}
+
+.profile-details .top-artists .grid h5{
+    margin-bottom: 5px;
+}
+
+.profile-details .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .recents {
@@ -268,6 +297,7 @@ main #profile img:active {
     max-width: 60px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    box-shadow: 5px 0 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 .saved-episodes .list,
@@ -289,14 +319,16 @@ main #profile img:active {
 }
 
 .saved-episodes .list div,
-.your-shows .list div {
+.your-shows .list div,
+.profile-details .grid div {
     background-color: rgb(30, 30, 30);
     padding: 15px;
     border-radius: 5px;
 }
 
 .saved-episodes .list div:hover,
-.your-shows .list div:hover {
+.your-shows .list div:hover,
+.profile-details .grid div:hover {
     background-color: rgb(40, 40, 40);
     cursor: pointer;
 }
@@ -343,6 +375,10 @@ main #profile img:active {
     .your-shows .list div:nth-child(3),
     .saved-episodes .list div:nth-child(3) {
         display: block;
+    }
+
+    .profile-details .grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
