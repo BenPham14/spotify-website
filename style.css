@@ -226,7 +226,9 @@ main #profile img:active {
     flex-direction: column;
 }
 
-.profile-details img {
+.profile-details #details img,
+.profile-details .top-artists img 
+{
     max-width: 100px;
     object-fit: cover;
     border-radius: 50%;
@@ -248,13 +250,43 @@ main #profile img:active {
     color: rgb(170, 170, 170);
 }
 
-.profile-details .top-artists .grid h5{
+.profile-details .top-artists .grid h5 {
     margin-bottom: 5px;
 }
 
 .profile-details .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+}
+
+.profile-details table {
+    border-collapse: collapse;
+    min-width: 100%;
+}
+
+.profile-details td {
+    padding: 10px 0;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.profile-details td:first-of-type {
+    text-align: end;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.profile-details td:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.profile-details tr:hover {
+    background: rgb(40, 40, 40);
+}
+
+.profile-details .top-tracks img {
+    max-width: 40px;
 }
 
 .recents {

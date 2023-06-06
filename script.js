@@ -225,14 +225,33 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists) {
         <div class="top-tracks">
             <h2>Top tracks this month</h2>
             <h5>Only visible to you</h5>
-            <div>
-
-            </div>
+            <table>
+                <tbody></tbody>
+            </table>
         </div>
     `;
 
+    const l = [1,2,3,4];
+
+    const topTracks = l.map(i => {
+        const list = document.createElement('tr');
+        list.innerHTML = `
+            <td>1</td>
+            <td><img src="assets/likedsongs.jpg" alt=""></td>
+            <td>Song</td>
+            <td>Artist</td>
+            <td>0:00</td>
+        `;
+        console.log(list);
+        return list;
+    });
+
     document.querySelector(".profile-details").innerHTML = profileList;
     document.querySelector("main #profile img").src = profile.images[0].url;
+
+    topTracks.forEach(i => {
+        document.querySelector(".profile-details .top-tracks tbody").append(i);
+    });
 }
 
 /** --------------------------- Profile Modal --------------------------- **/
