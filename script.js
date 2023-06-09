@@ -7,7 +7,8 @@ const playlistsURL = "https://api.spotify.com/v1/me/playlists?offset=0&limit=20"
 const podcastsURL = "https://api.spotify.com/v1/me/shows?offset=0&limit=20";
 const episodesURL = "https://api.spotify.com/v1/me/episodes?offset=0&limit=4";
 const profileURL = "https://api.spotify.com/v1/me";
-const topArtistsURL = "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=3&offset=0"
+const topArtistsURL = "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=3&offset=0";
+const topTracksURL = "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=4&offset=0";
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -21,8 +22,9 @@ if (!code) {
     const episodes = await fetchAPI(accessToken, episodesURL);
     const profile = await fetchAPI(accessToken, profileURL);
     const topArtists = await fetchAPI(accessToken, topArtistsURL);
-    // console.log(topArtists);
-    populateUI(playlists.items, podcasts.items, episodes.items, profile, topArtists.items);
+    const topTracks = await fetchAPI(accessToken, topTracksURL);
+    // console.log(topTracks);
+    populateUI(playlists.items, podcasts.items, episodes.items, profile, topArtists.items, topTracks.items);
 }
 
 async function redirectToAuthCodeFlow(clientId, redirectUri) {
@@ -92,7 +94,7 @@ async function fetchAPI(token, url) {
     return await result.json();
 }
 
-function populateUI(playlists, podcasts, episodes, profile, topArtists) {
+function populateUI(playlists, podcasts, episodes, profile, topArtists, topTracks) {
     // TODO: Update UI with data
     const playlist = playlists.map(p => {
         const list = document.createElement('a');
@@ -231,25 +233,27 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists) {
         </div>
     `;
 
-    const l = [1,2,3,4];
-
-    const topTracks = l.map(i => {
+    let trackRank = 1;
+    const topTrack = topTracks.map(t => {
         const list = document.createElement('tr');
+        let min = Math.floor(t.duration_ms / 60000);
+        let sec = ((t.duration_ms % 60000) / 1000).toFixed(0);
+
         list.innerHTML = `
-            <td>1</td>
-            <td><img src="assets/likedsongs.jpg" alt=""></td>
-            <td>Song</td>
-            <td>Artist</td>
-            <td>0:00</td>
+            <td>${trackRank}</td>
+            <td><img src=${t.album.images[0].url} alt=""></td>
+            <td>${t.name}</td>
+            <td>${t.artists[0].name}</td>
+            <td>${min + ":" + (sec < 10 ? '0' : '') + sec}</td>
         `;
-        console.log(list);
+        trackRank += 1;
         return list;
     });
 
     document.querySelector(".profile-details").innerHTML = profileList;
     document.querySelector("main #profile img").src = profile.images[0].url;
 
-    topTracks.forEach(i => {
+    topTrack.forEach(i => {
         document.querySelector(".profile-details .top-tracks tbody").append(i);
     });
 }

@@ -262,12 +262,12 @@ main #profile img:active {
 .profile-details table {
     border-collapse: collapse;
     min-width: 100%;
+    max-width: 400px;
 }
 
 .profile-details td {
-    padding: 10px 0;
+    padding: 10px;
     font-size: 0.875rem;
-    text-align: center;
 }
 
 .profile-details td:first-of-type {
@@ -279,6 +279,7 @@ main #profile img:active {
 .profile-details td:last-of-type {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    text-align: end;
 }
 
 .profile-details tr:hover {
