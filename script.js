@@ -126,15 +126,38 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
 
     const playlistButton = document.querySelector("aside #playlist-btn");
     const podcastButton = document.querySelector("aside #podcast-btn");
+    const listClose = document.querySelector("aside #close");
 
     playlistButton.addEventListener('click', () => {
         document.querySelector('aside .list #podcast').style.display = "none";
         document.querySelector('aside .list #playlist').style.display = "";
+        podcastButton.style.display = "none";
+        listClose.style.display = "block";
+        playlistButton.style.color = "black";
+        playlistButton.style.backgroundColor = "white";
     });
 
     podcastButton.addEventListener('click', () => {
         document.querySelector('aside .list #playlist').style.display = "none";
         document.querySelector('aside .list #podcast').style.display = "";
+        playlistButton.style.display = "none";
+        listClose.style.display = "block";
+        podcastButton.style.color = "black";
+        podcastButton.style.backgroundColor = "white";
+    });
+
+    listClose.addEventListener('click', () => {
+        playlistButton.style.display = "";
+        podcastButton.style.display = "";
+        document.querySelector('aside .list #playlist').style.display = "";
+        document.querySelector('aside .list #podcast').style.display = "";
+        playlistButton.style.display = "";
+        podcastButton.style.display = "";
+        listClose.style.display = "";
+        playlistButton.style.color = "";
+        playlistButton.style.backgroundColor = "";
+        podcastButton.style.color = "";
+        podcastButton.style.backgroundColor = "";
     });
 
     /** --------------------------------------------------- **/

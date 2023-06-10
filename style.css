@@ -89,6 +89,10 @@ aside button:active {
     background-color: rgb(30, 30, 30);
 }
 
+aside #close {
+    display: none;
+}
+
 aside a {
     border-radius: 5px;
     overflow: hidden;
