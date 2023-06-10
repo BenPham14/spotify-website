@@ -124,13 +124,15 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
         document.querySelector("aside .list #podcast").append(p);
     });
 
+    const playlistContent = document.querySelector('aside .list #playlist');
+    const podcastContent = document.querySelector('aside .list #podcast');
     const playlistButton = document.querySelector("aside #playlist-btn");
     const podcastButton = document.querySelector("aside #podcast-btn");
     const listClose = document.querySelector("aside #close");
 
     playlistButton.addEventListener('click', () => {
-        document.querySelector('aside .list #podcast').style.display = "none";
-        document.querySelector('aside .list #playlist').style.display = "";
+        podcastContent.style.display = "none";
+        playlistContent.style.display = "";
         podcastButton.style.display = "none";
         listClose.style.display = "block";
         playlistButton.style.color = "black";
@@ -138,8 +140,8 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
     });
 
     podcastButton.addEventListener('click', () => {
-        document.querySelector('aside .list #playlist').style.display = "none";
-        document.querySelector('aside .list #podcast').style.display = "";
+        playlistContent.style.display = "none";
+        podcastContent.style.display = "";
         playlistButton.style.display = "none";
         listClose.style.display = "block";
         podcastButton.style.color = "black";
@@ -149,10 +151,8 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
     listClose.addEventListener('click', () => {
         playlistButton.style.display = "";
         podcastButton.style.display = "";
-        document.querySelector('aside .list #playlist').style.display = "";
-        document.querySelector('aside .list #podcast').style.display = "";
-        playlistButton.style.display = "";
-        podcastButton.style.display = "";
+        playlistContent.style.display = "";
+        podcastContent.style.display = "";
         listClose.style.display = "";
         playlistButton.style.color = "";
         playlistButton.style.backgroundColor = "";
