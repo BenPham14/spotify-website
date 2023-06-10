@@ -107,7 +107,7 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
     });
     
     playlist.forEach(p => {
-        document.querySelector("aside .list").append(p);
+        document.querySelector("aside .list #playlist").append(p);
     });
 
     const pod = podcasts.map(p => {
@@ -121,7 +121,20 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
     });
     
     pod.forEach(p => {
-        document.querySelector("aside .list").append(p);
+        document.querySelector("aside .list #podcast").append(p);
+    });
+
+    const playlistButton = document.querySelector("aside #playlist-btn");
+    const podcastButton = document.querySelector("aside #podcast-btn");
+
+    playlistButton.addEventListener('click', () => {
+        document.querySelector('aside .list #podcast').style.display = "none";
+        document.querySelector('aside .list #playlist').style.display = "";
+    });
+
+    podcastButton.addEventListener('click', () => {
+        document.querySelector('aside .list #playlist').style.display = "none";
+        document.querySelector('aside .list #podcast').style.display = "";
     });
 
     /** --------------------------------------------------- **/
