@@ -12,6 +12,11 @@ const topTracksURL = "https://api.spotify.com/v1/me/top/tracks?time_range=short_
 const recentlyPlayedURL = "https://api.spotify.com/v1/me/player/recently-played?limit=6";
 
 const params = new URLSearchParams(window.location.search);
+performance.getEntriesByType("navigation").forEach((entry) => {
+    if (entry.type === "reload") {
+        params.delete("code")
+    }
+});
 const code = params.get("code");
 
 if (!code) {
