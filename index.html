@@ -42,15 +42,14 @@
                 <script>
                     document.getElementById('greeting').innerHTML = new Date().getHours() >= 12 ? 'Good afternoon' : 'Good morning';
                 </script>
+                <div class="profile-modal flex showing">
+                    <a href="#" id="profile-button">Profile</a>
+                    <a href="#">Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
             </div>
             <div class="playlists grid"></div>
-        </section>
-
-        <section class="profile-modal flex showing">
-            <a href="#" id="profile-button">Profile</a>
-            <a href="#">Account</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
         </section>
 
         <dialog class="profile-details"></dialog>

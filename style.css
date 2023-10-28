@@ -135,6 +135,7 @@ aside .title {
 main .title {
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 main #profile {
@@ -162,8 +163,8 @@ main #profile img:active {
 .profile-modal {
     background-color: rgb(40, 40, 40);
     position: absolute;
-    right: 30px;
-    top: 90px;
+    right: 0px;
+    top: 70px;
     border-radius: 5px;
     font-size: 0.875rem;
     padding: 5px;

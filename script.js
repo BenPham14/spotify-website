@@ -9,6 +9,7 @@ const episodesURL = "https://api.spotify.com/v1/me/episodes?offset=0&limit=4";
 const profileURL = "https://api.spotify.com/v1/me";
 const topArtistsURL = "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=3&offset=0";
 const topTracksURL = "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=4&offset=0";
+const recentlyPlayedURL = "https://api.spotify.com/v1/me/player/recently-played?limit=6";
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
@@ -23,8 +24,9 @@ if (!code) {
     const profile = await fetchAPI(accessToken, profileURL);
     const topArtists = await fetchAPI(accessToken, topArtistsURL);
     const topTracks = await fetchAPI(accessToken, topTracksURL);
-    // console.log(topTracks);
-    populateUI(playlists.items, podcasts.items, episodes.items, profile, topArtists.items, topTracks.items);
+    const recentlyPlayed = await fetchAPI(accessToken, recentlyPlayedURL);
+    // console.log(recentlyPlayed);
+    populateUI(playlists.items, podcasts.items, episodes.items, profile, topArtists.items, topTracks.items, recentlyPlayed.items);
 }
 
 async function redirectToAuthCodeFlow(clientId, redirectUri) {
@@ -38,7 +40,7 @@ async function redirectToAuthCodeFlow(clientId, redirectUri) {
     params.append("client_id", clientId);
     params.append("response_type", "code");
     params.append("redirect_uri", redirectUri);
-    params.append("scope", "user-read-private user-read-email playlist-read-private user-library-read user-read-playback-position user-top-read");
+    params.append("scope", "user-read-private user-read-email playlist-read-private user-library-read user-read-playback-position user-top-read user-read-recently-played");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
 
@@ -94,7 +96,7 @@ async function fetchAPI(token, url) {
     return await result.json();
 }
 
-function populateUI(playlists, podcasts, episodes, profile, topArtists, topTracks) {
+function populateUI(playlists, podcasts, episodes, profile, topArtists, topTracks, recentlyPlayed) {
     // TODO: Update UI with data
     const playlist = playlists.map(p => {
         const list = document.createElement('a');
@@ -194,34 +196,19 @@ function populateUI(playlists, podcasts, episodes, profile, topArtists, topTrack
 
     /** --------------------------------------------------- **/
 
-    const playlistList = `
-        <a href="#" class="flex">
-            <img src="assets/likedsongs.jpg" alt="">
-            <h3>Liked Songs</h3>
-        </a>
-        <a href="#" class="flex">
-            <img src=${playlists[0].images[0].url} alt="">
-            <h3>${playlists[0].name}</h3>
-        </a>
-        <a href="#" class="flex">
-            <img src=${playlists[1].images[0].url} alt="">
-            <h3>${playlists[1].name}</h3>
-        </a>
-        <a href="#" class="flex">
-            <img src="assets/thejournal.jpeg" alt="">
-            <h3>The Journal.</h3>
-        </a>
-        <a href="#" class="flex">
-            <img src="assets/effwon.jpeg" alt="">
-            <h3>eff won with DRS</h3>
-        </a>
-        <a href="#" class="flex">
-            <img src="assets/thepotterverse.png" alt="">
-            <h3>The Potterverse: A Harry Potter Podcast</h3>
-        </a>
-    `
+    const recent = recentlyPlayed.map(r => {
+        const list = document.createElement('a');
+        list.classList.add('flex');
+        list.innerHTML = `
+            <img src=${r.track.album.images[0].url} alt="">
+            <h3>${r.track.album.name}</h3>
+        `;
+        return list;
+    });
 
-    document.querySelector(".playlists").innerHTML = playlistList;
+    recent.forEach(r => {
+        document.querySelector(".playlists").append(r);
+    });
 
     /** --------------------------------------------------- **/
 
